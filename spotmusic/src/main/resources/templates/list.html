@@ -57,6 +57,8 @@
         			<th>Nombre</th>
         			<th>Email</th>
         			<th>Teléfono</th>
+        			<th>Operaciones</th>
+        			
         	</thead>
         	<tbody>
         		<tr th:each="empleado :${listaEmpleados}">
@@ -64,6 +66,7 @@
         			<td th:text="${empleado.nombre}">pepe</td>
         			<td th:text="${empleado.email}">pepe@gmail.com</td>
         			<td th:text="${empleado.telefono}">134235</td>
+        			<td><a th:href="@{/empleado/edit/{id}(id=${empleado.id})}">Editar</a></td>	
         		</tr>
         	</tbody>
         </table>
