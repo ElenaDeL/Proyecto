@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Starter Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="/css/starter-template.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Miempresa.com</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/list">Inicio</a></li>
+					<li><a href="/empleado/new">Nuevo Usuario</a></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8">
+				<form method="post" enctype="multipart/form-data" action="#"
+					th:action="@{/usuario/new/submit}" th:object="${usuarioForm}">
+					<h1>Nuevo usuario</h1>
+
+					<!-- 	<div class="form-group" 
+        		th:classappend="${#fields.hasErrors('id')} ? 'has-error' ">
+						<label for="id">ID</label> <input type="text"
+							class="form-control" id="id" placeholder="1"
+							th:field="*{id}" 
+							th:attrappend="readonly=${empleadoForm.id !=0} ? 'readonly' : null">
+							<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="help-block" id="id-error">Errores</span>
+				</div> -->
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('nombre')} ? 'has-error' ">
+						<label for="nombre">Nombre</label> <input type="text"
+							class="form-control" id="nombre" placeholder="Nombre"
+							th:field="*{nombre}" /> <span
+							th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+							class="help-block" id="nombre-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('apellido')} ? 'has-error' ">
+						<label for="apellido">apellido</label> <input type="text"
+							class="form-control" id="apellido" placeholder="apellido"
+							th:field="*{apellido}" /> <span
+							th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"
+							class="help-block" id="apellido-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('pais')} ? 'has-error' ">
+						<label for="pais">pais</label> <input type="text"
+							class="form-control" id="pais" placeholder="pais"
+							th:field="*{pais}" /> <span th:if="${#fields.hasErrors('pais')}"
+							th:errors="*{pais}" class="help-block" id="pais-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('nombre_de_cuenta')} ? 'has-error' ">
+						<label for="nombre_de_cuenta">Nombre de cuenta</label> <input
+							type="text" class="form-control" id="nombre_de_cuenta"
+							placeholder="nombre_de_cuenta" th:field="*{nombre_de_cuenta}" />
+						<span th:if="${#fields.hasErrors('nombre_de_cuenta')}"
+							th:errors="*{nombre_de_cuenta}" class="help-block"
+							id="nombre_de_cuenta-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('email')} ? 'has-error' ">
+						<label for="email">Email</label> <input type="email"
+							class="form-control" id="email"
+							placeholder="emple@openwebinars.net" th:field="*{email}" /> <span
+							th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+							class="help-block" id="email-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('contraseña')} ? 'has-error' ">
+						<label for="contraseña">Contraseña</label> <input type="password"
+							class="form-control" id="contraseña" placeholder="contraseña"
+							th:field="*{contraseña}" /> <span
+							th:if="${#fields.hasErrors('contraseña')}"
+							th:errors="*{contraseña}" class="help-block"
+							id="contraseña-error">Errores</span>
+					</div>
+
+					<div class="form-group"
+						th:classappend="${#fields.hasErrors('confirmar_contraseña')} ? 'has-error' ">
+						<label for="confirmar_contraseña">Confirmar Contraseña</label> <input
+							type="password" class="form-control" id="confirmar_contraseña"
+							placeholder="confirmar_contraseña"
+							th:field="*{confirmar_contraseña}" /> <span
+							th:if="${#fields.hasErrors('confirmar_contraseña')}"
+							th:errors="*{confirmar_contraseña}" class="help-block"
+							id="confirmar_contraseña
+							-error">Errores</span>
+					</div>
+
+					<div class="well">
+						<div class="input-append date">
+							<input type="text" class="span2" value="" id="dpd1"> <span
+								class="add-on"><i class="icon-calendar"></i></span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="file">Avatar</label> <input id="filebutton"
+							name="file" class="form-control input-file" type="file">
+					</div>
+
+					<button type="submit" class="btn btn-default">Enviar</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
