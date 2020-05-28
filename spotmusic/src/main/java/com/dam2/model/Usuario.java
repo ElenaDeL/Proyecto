@@ -4,6 +4,8 @@ import java.io.File;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.query.Update;
@@ -23,13 +25,14 @@ import nonapi.io.github.classgraph.json.Id;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
-@Document
+@Document(collection = "usuario")
 public class Usuario {
 	
 	
 	@Include
 	@Id
 	public String id;
+	@NotEmpty(message = "{usuario.nombre.confignombre}")
 	public String nombre;
 	public String email;
 //	public String contraseña;
@@ -38,7 +41,6 @@ public class Usuario {
 //	public String apellido;
 //	public String país;
 //	public LocalDate fecha_nacimiento;
-
 	
 	
 

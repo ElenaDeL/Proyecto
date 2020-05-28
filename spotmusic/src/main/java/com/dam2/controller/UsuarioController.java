@@ -1,5 +1,7 @@
 package com.dam2.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/usuario/new/submit")
-	public String nuevoEmpleadoSubmit(@ModelAttribute("usuarioForm") Usuario nuevoUsuario) {
+	public String nuevoEmpleadoSubmit(@Valid @ModelAttribute("usuarioForm") Usuario nuevoUsuario) {
 		servicio.inserUsuario(nuevoUsuario);
 
 		return "redirect:/usuario/list";
